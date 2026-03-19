@@ -12,6 +12,22 @@ Real-time collaborative code editor (CodeSandbox-style) with:
 
 - Node.js (you have `v24+`)
 
+## Quick start (single command)
+
+Install dependencies in both apps and run both dev servers:
+
+```bash
+cd server && npm install
+cd ../client && npm install
+cd ..
+npm run dev
+```
+
+By default:
+
+- Client: `http://localhost:5173`
+- Server: `http://localhost:4000`
+
 ## Run locally
 
 ### 1) Start the server
@@ -34,6 +50,24 @@ npm run dev
 
 Client runs on the URL printed by Vite (usually `http://localhost:5173` or next available port).
 
+## Environment configuration
+
+### Server (`server/.env`)
+
+```bash
+PORT=4000
+CLIENT_ORIGIN=http://localhost:5173
+```
+
+### Client (`client/.env`)
+
+```bash
+VITE_SERVER_HTTP=http://localhost:4000
+VITE_SERVER_WS=ws://localhost:4000/collab
+```
+
+If these are not set, the app uses the same defaults.
+
 ## Collaboration
 
 - Open the client in **two browser windows**
@@ -50,6 +84,22 @@ Files saved/loaded:
 
 - Web mode: `index.html`, `styles.css`, `main.js`
 - Python mode: `main.py`
+
+## Production build
+
+Build the client:
+
+```bash
+cd client
+npm run build
+```
+
+Run the server:
+
+```bash
+cd server
+npm run start
+```
 
 ## Notes
 
